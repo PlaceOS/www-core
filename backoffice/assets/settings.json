@@ -6,8 +6,8 @@
     "composer": {
         "domain": "",
         "route": "/backoffice",
-        "protocol": "http:",
-        "use_domain": false,
+        "protocol": "https:",
+        "use_domain": true,
         "local_login": false
     },
     "app": {
