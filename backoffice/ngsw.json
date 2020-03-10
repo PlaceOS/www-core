@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1583839525898,
+  "timestamp": 1583881446790,
   "index": "/backoffice/index.html",
   "assetGroups": [
     {
@@ -32,14 +32,14 @@
         "/backoffice/9-es5.f64bfb775dab7b4cdd96.js",
         "/backoffice/favicon.ico",
         "/backoffice/index.html",
-        "/backoffice/main-es2015.6bc34ec7c035983940b4.js",
-        "/backoffice/main-es5.6bc34ec7c035983940b4.js",
+        "/backoffice/main-es2015.7c21edfde3af533aefa8.js",
+        "/backoffice/main-es5.7c21edfde3af533aefa8.js",
         "/backoffice/manifest.webmanifest",
         "/backoffice/polyfills-es2015.2b532bd8220dbc37bb1c.js",
         "/backoffice/polyfills-es5.1ffd46ab0fea45d9471e.js",
         "/backoffice/runtime-es2015.341471a225f0d2783080.js",
         "/backoffice/runtime-es5.341471a225f0d2783080.js",
-        "/backoffice/styles.8d08692ca950b7e5751e.css"
+        "/backoffice/styles.452da1d5a9756e51aa37.css"
       ],
       "patterns": []
     },
@@ -355,15 +355,15 @@
     "/backoffice/assets/monaco/vs/loader.js": "8dffcad06874610e2ae2cb89be4e8bea9414aa46",
     "/backoffice/assets/settings.json": "a45ed95a62459635ec0e783cea9e33ff024d267c",
     "/backoffice/favicon.ico": "fdc860283294c177c4935459507f4976ac8d7219",
-    "/backoffice/index.html": "890904d5fec5ebb9a79e9cbffa7bc1072db6f595",
-    "/backoffice/main-es2015.6bc34ec7c035983940b4.js": "e02750d91e7d3bec69722b293d2d9e36778812e2",
-    "/backoffice/main-es5.6bc34ec7c035983940b4.js": "5db78c0c3204edbe59a3755dfd5c8cfdcd1524d0",
+    "/backoffice/index.html": "850f832eb7f10f46b939f12f789a9c22f261e45d",
+    "/backoffice/main-es2015.7c21edfde3af533aefa8.js": "ea327ae8f2d9b708961f20b8ebab55a3915a0f4b",
+    "/backoffice/main-es5.7c21edfde3af533aefa8.js": "0a12787019c729bb3108356fc7e73568ef39d950",
     "/backoffice/manifest.webmanifest": "988c96618f8c1e129ecc6572821b7dc2e2a291a5",
     "/backoffice/polyfills-es2015.2b532bd8220dbc37bb1c.js": "6816720a92ee443beb3c45d6e3965ab6be95e184",
     "/backoffice/polyfills-es5.1ffd46ab0fea45d9471e.js": "7e264c23d1a57d559ca5795eaca6e0f3e48ea5c5",
     "/backoffice/runtime-es2015.341471a225f0d2783080.js": "0c8e340ce255f67e12f03f102d71d9ecb4d29f88",
     "/backoffice/runtime-es5.341471a225f0d2783080.js": "3c4001a6d914606f8329d394b9b4c38f74fa2799",
-    "/backoffice/styles.8d08692ca950b7e5751e.css": "934d189eb57bf1149f1e123c881905d508f7dce9"
+    "/backoffice/styles.452da1d5a9756e51aa37.css": "76637394bdfbb47158691dc1310567024c6e08a8"
   },
   "navigationUrls": [
     {
