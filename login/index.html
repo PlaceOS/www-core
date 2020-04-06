@@ -4,8 +4,97 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Login</title>
-        <link rel="stylesheet" href="/styles/auth.css">
         <script src="/scripts/local_auth.js"></script>
+        <style>
+            html
+            body {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                font-size: 20px;
+                background-color: #f0f0f0;
+            }
+
+            * {
+                font-family: "Roboto", "Verdana", "Helvetica Neue", Arial, sans-serif;
+                box-sizing: border-box;
+            }
+
+            article {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                margin: 1em;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                overflow: hidden;
+                width: 24em;
+                background-color: #fff;
+            }
+
+            header {
+                text-align: right;
+                padding: .5em 1em;
+                background-color: #b72706;
+                color: #fff;
+                width: 100%;
+                font-size: 1.2em;
+            }
+
+            form {
+                width: 100%;
+                padding: 1em;
+            }
+
+            .field {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            label {
+                font-size: .8em;
+                font-weight: 500;
+                margin-bottom: .25em;
+                display: none;
+            }
+
+            input {
+                border-radius: 4px 4px 0 0;
+                border: 1px solid #ccc;
+                padding: .5em;
+                font-size: 1em;
+                width: 100%;
+            }
+
+            .field:nth-child(2) input {
+                border-radius: 0 0 4px 4px;
+                border-top: none;
+            }
+
+            .submit {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 1em;
+            }
+
+            button {
+                font-size: .9em;
+                border: none;
+                padding: .5em;
+                width: 8em;
+                border-radius: 4px;
+                background-color: #b72706;
+                transition: background-color 200ms;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #a61600;
+            }
+        </style>
     </head>
     <body>
         <article>
@@ -14,32 +103,19 @@
                 Log In
             </header>
             <form accept-charset="UTF-8" action="/auth/signin" method="POST" id="login-form">
-                <label for="email">Email:</label>
-                <input name="email" type="email" placeholder="Email" class="first">
-                <label for="password">Password:</label>
-                <input name="password" type="password" placeholder="Password">
-                <p>
-                    <input type="submit" value="Log In">
-                </p>
+                <div class="field">
+                    <label for="email">Email:</label>
+                    <input name="email" type="email" placeholder="Email" class="first">
+                </div>
+                <div class="field">
+                    <label for="password">Password:</label>
+                    <input name="password" type="password" placeholder="Password">
+                </div>
+                <div class="submit">
+                    <button>Log In</button>
+                </div>
                 <p id="error" style="display: none;"><span style="display: none">Sorry, your email or password could not be found. Please try again.</span></p>
             </form>
-
-            <!-- 
-            <nav>
-                <a href="/auth/google"><span class="icon-social-google-plus"></span>Google</a>
-                <a href="/auth/twitter"><span class="icon-social-twitter"></span>Twitter</a>
-                <a href="/auth/facebook"><span class="icon-social-facebook"></span>Facebook</a>
-
-                 <a href="#"><span class="icon-social-pinterest"></span>Pinterest</a>
-                <a href="#"><span class="icon-social-linkedin"></span>LinkedIn</a>
-                <a href="#"><span class="icon-social-digg"></span>Digg</a>
-
-                <a href="#"><span class="icon-social-quora"></span>Quora</a>
-                <a href="#"><span class="icon-social-vimeo"></span>Vimeo</a>
-                <a href="#"><span class="icon-social-yahoo"></span>Yahoo</a>
-            </nav>
-            <p>Haven't logged in before? <a href="/signup/index.html">Sign up here</a></p>
-             -->
         </article>
         <script>
             localStorage.removeItem('accessToken');
