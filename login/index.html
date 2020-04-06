@@ -91,6 +91,13 @@
                 cursor: pointer;
             }
 
+            #error {
+                font-size: .625em;
+                color: #b72706;
+                text-align: center;
+                margin: .5em 0;
+            }
+
             button:hover {
                 background-color: #a61600;
             }
@@ -111,10 +118,10 @@
                     <label for="password">Password:</label>
                     <input name="password" type="password" placeholder="Password">
                 </div>
+                <p id="error" style="display: none;"><span style="display: none">Sorry, your email or password could not be found. Please try again.</span></p>
                 <div class="submit">
                     <button>Log In</button>
                 </div>
-                <p id="error" style="display: none;"><span style="display: none">Sorry, your email or password could not be found. Please try again.</span></p>
             </form>
         </article>
         <script>
