@@ -1,6 +1,6 @@
-var SETTINGS = {
-    env: 'dev',
-    debug: true,
+const SETTINGS = {
+    env: 'prod',
+    debug: false,
     mock: false,
     composer: {},
     app: {},
@@ -191,11 +191,9 @@ SETTINGS.app.users = {
 SETTINGS.app.domains = {
     can_create: true,
 };
-
 /*==========================*\
 ||     TRIGGER SETTINGS     ||
 \*==========================*/
-
 SETTINGS.app.triggers = {
     can_create: true,
 };
@@ -210,5 +208,3 @@ SETTINGS.app.repositories = {
 
 /** Add settings to the global space */
 window['settings.json'] = SETTINGS;
-
-console.log('Embbeded settings.json');
