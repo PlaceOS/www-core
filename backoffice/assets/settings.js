@@ -12,7 +12,7 @@ var SETTINGS = {
 
 SETTINGS.composer = {
     domain: '',
-    route: '',
+    route: '/backoffice',
     protocol: '',
     use_domain: true,
     local_login: false,
