@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1587101331021,
+  "timestamp": 1587108527141,
   "index": "/backoffice/index.html",
   "assetGroups": [
     {
@@ -16,8 +16,8 @@
         "/backoffice/11-es5.3acd067b9a0debf9da32.js",
         "/backoffice/12-es2015.118e3eb48574e0820dd9.js",
         "/backoffice/12-es5.118e3eb48574e0820dd9.js",
-        "/backoffice/13-es2015.4deac2dd6996415b5080.js",
-        "/backoffice/13-es5.4deac2dd6996415b5080.js",
+        "/backoffice/13-es2015.9dadd1f66cff0f447759.js",
+        "/backoffice/13-es5.9dadd1f66cff0f447759.js",
         "/backoffice/14-es2015.eb79a45cb0b970910cf7.js",
         "/backoffice/14-es5.eb79a45cb0b970910cf7.js",
         "/backoffice/15-es2015.81d8e0eeebc55d67e4e9.js",
@@ -37,8 +37,8 @@
         "/backoffice/manifest.webmanifest",
         "/backoffice/polyfills-es2015.495a14908bd0a2dc5248.js",
         "/backoffice/polyfills-es5.023b6f7f45e9ec357588.js",
-        "/backoffice/runtime-es2015.ea9480e3d9030ea0f1ed.js",
-        "/backoffice/runtime-es5.ea9480e3d9030ea0f1ed.js",
+        "/backoffice/runtime-es2015.d8ae7e5f7c97d9b04f7c.js",
+        "/backoffice/runtime-es5.d8ae7e5f7c97d9b04f7c.js",
         "/backoffice/styles.7cfa74bebfde72a18d7f.css"
       ],
       "patterns": []
@@ -228,8 +228,8 @@
     "/backoffice/11-es5.3acd067b9a0debf9da32.js": "d307b68fe01d460c14b8feb4cae152668fa64f65",
     "/backoffice/12-es2015.118e3eb48574e0820dd9.js": "e7bd033dd5d7c709d3a726eab71d1a4c53fa72b1",
     "/backoffice/12-es5.118e3eb48574e0820dd9.js": "c7d3240785f7fdcbda46ca8647bd2048c3541f56",
-    "/backoffice/13-es2015.4deac2dd6996415b5080.js": "24ec843713c403623e66264059cec062336f0435",
-    "/backoffice/13-es5.4deac2dd6996415b5080.js": "cd7ba56ef366569402a2856438c5040661cf5314",
+    "/backoffice/13-es2015.9dadd1f66cff0f447759.js": "eba489d926d92d8ff687b5f756649521c60b098a",
+    "/backoffice/13-es5.9dadd1f66cff0f447759.js": "79c9a00be15964865ede4f271326a463db61f14e",
     "/backoffice/14-es2015.eb79a45cb0b970910cf7.js": "6ac3452cba62db22a8dff9dd726d20f9ecc5801c",
     "/backoffice/14-es5.eb79a45cb0b970910cf7.js": "89854ffdb2a649b65e30dc95af4f896ee96e6311",
     "/backoffice/15-es2015.81d8e0eeebc55d67e4e9.js": "14a352535a3038e2e493f9e9a3db431dbeee8ab9",
@@ -373,16 +373,16 @@
     "/backoffice/assets/monaco/vs/language/typescript/tsMode.js": "3600b30a67a9ae26ed91b6393b833f70f8547116",
     "/backoffice/assets/monaco/vs/language/typescript/tsWorker.js": "89ce5d92a6b98b00121f76178d3ebbeb931c7edb",
     "/backoffice/assets/monaco/vs/loader.js": "8dffcad06874610e2ae2cb89be4e8bea9414aa46",
-    "/backoffice/assets/settings.js": "d50a193e25d2efd8a64882114ea9ff3c4aeaf05c",
+    "/backoffice/assets/settings.js": "1b993311a7dd6f2d12577ac153cad3bee9dfe4b8",
     "/backoffice/favicon.ico": "fdc860283294c177c4935459507f4976ac8d7219",
-    "/backoffice/index.html": "675279c7777c957eda0ff8d25ffa8cd4c7472f73",
+    "/backoffice/index.html": "34f451126b7b06ced24ace81a49addfdad36b554",
     "/backoffice/main-es2015.203f07397a406176a6af.js": "4962cbd65e941704f5199cb798238b8339f0601e",
     "/backoffice/main-es5.203f07397a406176a6af.js": "751ee478d4d22a38ee221987c9ea2ce7ef4e570b",
     "/backoffice/manifest.webmanifest": "988c96618f8c1e129ecc6572821b7dc2e2a291a5",
     "/backoffice/polyfills-es2015.495a14908bd0a2dc5248.js": "15a133b6cbb459a66fcd2e75f6aa25782e5d79c4",
     "/backoffice/polyfills-es5.023b6f7f45e9ec357588.js": "2930db992c38f1532f6d1c90b4172445fd6d7792",
-    "/backoffice/runtime-es2015.ea9480e3d9030ea0f1ed.js": "605057dcd50e5c1fc29d1d99e61256d75770f8cc",
-    "/backoffice/runtime-es5.ea9480e3d9030ea0f1ed.js": "0cf677b985cde1c95bb66fe96a9eeddfca9adc41",
+    "/backoffice/runtime-es2015.d8ae7e5f7c97d9b04f7c.js": "5849961b82bd54c91484b25c2276f0bbb4de3c17",
+    "/backoffice/runtime-es5.d8ae7e5f7c97d9b04f7c.js": "836397e2770970d81d849728c41d6cd84e718d5d",
     "/backoffice/styles.7cfa74bebfde72a18d7f.css": "3718262f8874a4d3fdd37df7ea810f49ef6b87a6"
   },
   "navigationUrls": [

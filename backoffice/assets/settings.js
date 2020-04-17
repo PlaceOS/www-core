@@ -14,7 +14,7 @@ SETTINGS.composer = {
     domain: '',
     route: '/backoffice',
     protocol: '',
-    use_domain: true,
+    use_domain: false,
     local_login: false,
 };
 
