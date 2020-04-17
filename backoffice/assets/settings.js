@@ -14,7 +14,7 @@ SETTINGS.composer = {
     domain: '',
     route: '',
     protocol: '',
-    use_domain: false,
+    use_domain: true,
     local_login: false,
 };
 
