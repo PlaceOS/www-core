@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1587353988399,
+  "timestamp": 1587354548970,
   "index": "/backoffice/index.html",
   "assetGroups": [
     {
@@ -32,8 +32,8 @@
         "/backoffice/9-es5.0241034c7fc1020d0d06.js",
         "/backoffice/favicon.ico",
         "/backoffice/index.html",
-        "/backoffice/main-es2015.fc157b2f57bd280926d9.js",
-        "/backoffice/main-es5.fc157b2f57bd280926d9.js",
+        "/backoffice/main-es2015.fc1d8a12d79ea5f2c12b.js",
+        "/backoffice/main-es5.fc1d8a12d79ea5f2c12b.js",
         "/backoffice/manifest.webmanifest",
         "/backoffice/polyfills-es2015.495a14908bd0a2dc5248.js",
         "/backoffice/polyfills-es5.c9441936740fb4c2d32d.js",
@@ -375,9 +375,9 @@
     "/backoffice/assets/monaco/vs/loader.js": "8dffcad06874610e2ae2cb89be4e8bea9414aa46",
     "/backoffice/assets/settings.js": "1b993311a7dd6f2d12577ac153cad3bee9dfe4b8",
     "/backoffice/favicon.ico": "fdc860283294c177c4935459507f4976ac8d7219",
-    "/backoffice/index.html": "25de7a8b7ca7d44a5bf90db130f0ac08bf433b90",
-    "/backoffice/main-es2015.fc157b2f57bd280926d9.js": "7d00865fbbd254154eb812859ad36c831a69dfe6",
-    "/backoffice/main-es5.fc157b2f57bd280926d9.js": "6057532adb25d202c3ca1ed464b17488a5448528",
+    "/backoffice/index.html": "80cdc3e07f892432640c0705ae71232e0dd31b86",
+    "/backoffice/main-es2015.fc1d8a12d79ea5f2c12b.js": "6344be44f45abe730c9cb51b06654f19f6cfd90e",
+    "/backoffice/main-es5.fc1d8a12d79ea5f2c12b.js": "f39249077fa4275e2deaae7037d85480bf86217b",
     "/backoffice/manifest.webmanifest": "988c96618f8c1e129ecc6572821b7dc2e2a291a5",
     "/backoffice/polyfills-es2015.495a14908bd0a2dc5248.js": "15a133b6cbb459a66fcd2e75f6aa25782e5d79c4",
     "/backoffice/polyfills-es5.c9441936740fb4c2d32d.js": "2930db992c38f1532f6d1c90b4172445fd6d7792",
