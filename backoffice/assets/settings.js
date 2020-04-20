@@ -1,6 +1,6 @@
 const SETTINGS = {
-    env: 'prod',
-    debug: false,
+    env: 'staging',
+    debug: true,
     mock: false,
     composer: {},
     app: {},
