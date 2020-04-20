@@ -14179,10 +14179,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
 
             return (list || []).map(function (commit) {
+              var date = dayjs__WEBPACK_IMPORTED_MODULE_6__(commit.date);
               return {
                 id: commit.commit,
                 name: "".concat(commit.subject),
-                extra: dayjs__WEBPACK_IMPORTED_MODULE_6__(commit.date).fromNow()
+                extra: date.isAfter(dayjs__WEBPACK_IMPORTED_MODULE_6__().subtract(1, 'm')) ? date.fromNow() : date.format('DD MMM YYYY')
               };
             });
           }));
@@ -36090,16 +36091,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var VERSION = {
       "dirty": false,
-      "raw": "ecb4df6",
-      "hash": "ecb4df6",
+      "raw": "4193265",
+      "hash": "4193265",
       "distance": null,
       "tag": null,
       "semver": null,
-      "suffix": "ecb4df6",
+      "suffix": "4193265",
       "semverString": null,
       "version": "2.0.2",
       "core_version": "1.0.0",
-      "time": 1587364057745
+      "time": 1587367621322
     };
     /* tslint:enable */
 

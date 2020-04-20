@@ -1313,7 +1313,7 @@ function SystemZonesComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "section", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "item-search-field", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function SystemZonesComponent_div_0_Template_item_search_field_ngModelChange_4_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r14); const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r13.new_zone = $event.id; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function SystemZonesComponent_div_0_Template_item_search_field_ngModelChange_4_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r14); const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r13.new_zone = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 6);
@@ -1428,20 +1428,20 @@ class SystemZonesComponent extends _shared_globals_base_directive__WEBPACK_IMPOR
     }
     joinZone() {
         if (this.new_zone) {
-            if (this.item.zones.indexOf(this.new_zone) < 0) {
+            if (this.item.zones.indexOf(this.new_zone.id) < 0) {
                 this.loading.emit(true);
                 const ref = this._dialog.open(src_app_overlays_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_3__["ConfirmModalComponent"], Object.assign(Object.assign({}, src_app_overlays_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_3__["CONFIRM_METADATA"]), { data: {
                         title: 'Add zone',
-                        content: `Add zone "${this.new_zone}" to system "${this.item.name}"`,
+                        content: `Add zone "${this.new_zone.name}" to system "${this.item.name}"`,
                         icon: { type: 'icon', class: 'backoffice-upload-to-cloud' }
                     } }));
                 this.subscription('confirm_ref', ref.componentInstance.event.subscribe((e) => {
                     if (e.reason === 'done') {
                         ref.componentInstance.loading = 'Adding zone to system...';
-                        this.item.storePendingChange('zones', Object(src_app_shared_utilities_general_utilities__WEBPACK_IMPORTED_MODULE_4__["unique"])([...this.item.zones, this.new_zone]));
+                        this.item.storePendingChange('zones', Object(src_app_shared_utilities_general_utilities__WEBPACK_IMPORTED_MODULE_4__["unique"])([...this.item.zones, this.new_zone.id]));
                         this.item.save().then((item) => {
                             this.loading.emit(false);
-                            this._service.notifySuccess(`Added zone "${this.new_zone}" to system`);
+                            this._service.notifySuccess(`Added zone "${this.new_zone.name}" to system`);
                             this.item = item;
                             this.loadZones();
                             ref.close();
@@ -1450,7 +1450,7 @@ class SystemZonesComponent extends _shared_globals_base_directive__WEBPACK_IMPOR
                         }, (err) => {
                             ref.componentInstance.loading = null;
                             this.loading.emit(false);
-                            this._service.notifyError(`Error adding zone "${this.new_zone}". Error: ${err.message || err}`);
+                            this._service.notifyError(`Error adding zone "${this.new_zone.name}". Error: ${err.message || err}`);
                         });
                     }
                     else {

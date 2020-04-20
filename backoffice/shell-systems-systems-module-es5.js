@@ -2845,7 +2845,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
           var ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r13.new_zone = $event.id;
+          return ctx_r13.new_zone = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -3066,13 +3066,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           var _this28 = this;
 
           if (this.new_zone) {
-            if (this.item.zones.indexOf(this.new_zone) < 0) {
+            if (this.item.zones.indexOf(this.new_zone.id) < 0) {
               this.loading.emit(true);
 
               var ref = this._dialog.open(src_app_overlays_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_3__["ConfirmModalComponent"], Object.assign(Object.assign({}, src_app_overlays_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_3__["CONFIRM_METADATA"]), {
                 data: {
                   title: 'Add zone',
-                  content: "Add zone \"".concat(this.new_zone, "\" to system \"").concat(this.item.name, "\""),
+                  content: "Add zone \"".concat(this.new_zone.name, "\" to system \"").concat(this.item.name, "\""),
                   icon: {
                     type: 'icon',
                     "class": 'backoffice-upload-to-cloud'
@@ -3084,12 +3084,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
                 if (e.reason === 'done') {
                   ref.componentInstance.loading = 'Adding zone to system...';
 
-                  _this28.item.storePendingChange('zones', Object(src_app_shared_utilities_general_utilities__WEBPACK_IMPORTED_MODULE_4__["unique"])([].concat(_toConsumableArray(_this28.item.zones), [_this28.new_zone])));
+                  _this28.item.storePendingChange('zones', Object(src_app_shared_utilities_general_utilities__WEBPACK_IMPORTED_MODULE_4__["unique"])([].concat(_toConsumableArray(_this28.item.zones), [_this28.new_zone.id])));
 
                   _this28.item.save().then(function (item) {
                     _this28.loading.emit(false);
 
-                    _this28._service.notifySuccess("Added zone \"".concat(_this28.new_zone, "\" to system"));
+                    _this28._service.notifySuccess("Added zone \"".concat(_this28.new_zone.name, "\" to system"));
 
                     _this28.item = item;
 
@@ -3105,7 +3105,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
                     _this28.loading.emit(false);
 
-                    _this28._service.notifyError("Error adding zone \"".concat(_this28.new_zone, "\". Error: ").concat(err.message || err));
+                    _this28._service.notifyError("Error adding zone \"".concat(_this28.new_zone.name, "\". Error: ").concat(err.message || err));
                   });
                 } else {
                   _this28.loading.emit(false);

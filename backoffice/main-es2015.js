@@ -7016,7 +7016,7 @@ class DriverFormComponent extends src_app_shared_globals_base_directive__WEBPACK
             { id: _placeos_ts_client__WEBPACK_IMPORTED_MODULE_2__["EngineDriverRole"].Device, name: 'Device' },
             { id: _placeos_ts_client__WEBPACK_IMPORTED_MODULE_2__["EngineDriverRole"].Service, name: 'Service' },
             { id: _placeos_ts_client__WEBPACK_IMPORTED_MODULE_2__["EngineDriverRole"].Websocket, name: 'Websocket' },
-            { id: _placeos_ts_client__WEBPACK_IMPORTED_MODULE_2__["EngineDriverRole"].Logic, name: 'Logic' }
+            { id: _placeos_ts_client__WEBPACK_IMPORTED_MODULE_2__["EngineDriverRole"].Logic, name: 'Logic' },
         ];
         /** List of available drivers for the active repository */
         this.driver_list = [];
@@ -7035,43 +7035,48 @@ class DriverFormComponent extends src_app_shared_globals_base_directive__WEBPACK
         return this._service.Repositories;
     }
     ngOnInit() {
-        this.driver_list$ = this.repo$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(100), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(repo_id => {
+        this.driver_list$ = this.repo$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(100), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])((repo_id) => {
             this.loading_drivers = true;
             this.driver_list = [];
             return this._service.Repositories.listDrivers(repo_id);
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(_ => {
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])((_) => {
             this._service.notifyError(`Error loading driver list. Error: ${_.message || _}`);
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])([]);
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((list) => {
             this.loading_drivers = false;
             this.commit_list = [];
-            return (list || []).map(driver => ({
+            return (list || []).map((driver) => ({
                 id: driver,
-                name: driver.replace(/\//g, ' > ')
+                name: driver.replace(/\//g, ' > '),
             }));
         }));
-        this.subscription('driver_list', this.driver_list$.subscribe((list) => this.driver_list = list));
-        this.commit_list$ = this.driver$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(100), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(driver_id => {
+        this.subscription('driver_list', this.driver_list$.subscribe((list) => (this.driver_list = list)));
+        this.commit_list$ = this.driver$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(100), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])((driver_id) => {
             this.loading_commits = true;
             this.commit_list = [];
             return this._service.Repositories.listCommits(this.base_repo.id, {
-                driver: `${driver_id}`
+                driver: `${driver_id}`,
             });
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(_ => {
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])((_) => {
             this._service.notifyError(`Error loading driver's commit list. Error: ${_.message || _}`);
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])([]);
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((list) => {
             this.loading_commits = false;
             if (this.form.controls.commit) {
-                this.base_commit = this.commit_list.find(commit => commit.id === this.form.controls.commit.value);
+                this.base_commit = this.commit_list.find((commit) => commit.id === this.form.controls.commit.value);
             }
-            return (list || []).map((commit) => ({
-                id: commit.commit,
-                name: `${commit.subject}`,
-                extra: dayjs__WEBPACK_IMPORTED_MODULE_6__(commit.date).fromNow()
-            }));
+            return (list || []).map((commit) => {
+                const date = dayjs__WEBPACK_IMPORTED_MODULE_6__(commit.date);
+                return {
+                    id: commit.commit,
+                    name: `${commit.subject}`,
+                    extra: date.isAfter(dayjs__WEBPACK_IMPORTED_MODULE_6__().subtract(1, 'm'))
+                        ? date.fromNow()
+                        : date.format('DD MMM YYYY'),
+                };
+            });
         }));
-        this.subscription('commit_list', this.commit_list$.subscribe((list) => this.commit_list = list));
+        this.subscription('commit_list', this.commit_list$.subscribe((list) => (this.commit_list = list)));
     }
     ngOnChanges(changes) {
         if (changes.form) {
@@ -7112,8 +7117,8 @@ class DriverFormComponent extends src_app_shared_globals_base_directive__WEBPACK
         this.loading = true;
         this._service.Repositories.driverDetails(this.base_repo.id, {
             driver: `${this.base_driver.id}`,
-            commit: `${event.id}`
-        }).then(driver => {
+            commit: `${event.id}`,
+        }).then((driver) => {
             this.loading = false;
             if (!this.form.controls.id.value) {
                 this.form.controls.name.setValue(driver.descriptive_name || '');
@@ -7163,7 +7168,7 @@ DriverFormComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefi
         args: [{
                 selector: 'driver-form',
                 templateUrl: './driver-form.component.html',
-                styleUrls: ['./driver-form.component.scss']
+                styleUrls: ['./driver-form.component.scss'],
             }]
     }], function () { return [{ type: src_app_services_app_service__WEBPACK_IMPORTED_MODULE_8__["ApplicationService"] }]; }, { form: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
@@ -18394,16 +18399,16 @@ __webpack_require__.r(__webpack_exports__);
 /* tslint:disable */
 const VERSION = {
     "dirty": false,
-    "raw": "ecb4df6",
-    "hash": "ecb4df6",
+    "raw": "4193265",
+    "hash": "4193265",
     "distance": null,
     "tag": null,
     "semver": null,
-    "suffix": "ecb4df6",
+    "suffix": "4193265",
     "semverString": null,
     "version": "2.0.2",
     "core_version": "1.0.0",
-    "time": 1587364057745
+    "time": 1587367621322
 };
 /* tslint:enable */
 
