@@ -37,7 +37,6 @@
                         stroke-linecap="round" />
                 </svg>
             </div>
-            <div style="font-size: 40px; margin-top: 1em; font-family: sans-serif">Loading application...</div>
         </div>
         <script>
             function loadAuthority(tries = 0) {
@@ -59,6 +58,8 @@
                     );
                 });
             }
+
+            loadAuthority();
         </script>
     </body>
 </html>
