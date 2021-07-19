@@ -7,4 +7,4 @@ index.html has the following behaviour:
 * Checks /auth/authority for a `default_app` config
 * If there is config, it redirects to that app, otherwise redirects to /backoffice/ as a fallback
 * If the /auth/authority request fails it retries with exponential back-off until the request succeeds
-* e.g. `"default_app": "/staff/"`
+* e.g. `"default_app": "/staff/"` should be set in backfoffice > Domains > (select target domain) > About > Config
