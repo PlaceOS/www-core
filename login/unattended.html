@@ -28,6 +28,22 @@
                 transform: rotate(360deg);
             }
         }
+
+        svg {
+            stroke: rgba(0,0,0, .87);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            html,
+            body {
+                background-color: #212121;
+                color: #fff;
+            }
+
+            svg {
+                stroke: #fff;
+            }
+        }
     </style>
 </head>
 
@@ -35,7 +51,7 @@
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; flex-direction: column;">
         <div style="height: 160px; width: 160px">
             <svg viewBox="0 0 120 120">
-                <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(0,0,0, .87)" stroke-width="12" stroke-dasharray="339.292" stroke-dashoffset="271.5"
+                <circle cx="60" cy="60" r="54" fill="none" stroke-width="12" stroke-dasharray="339.292" stroke-dashoffset="271.5"
                     stroke-linecap="round" />
             </svg>
         </div>
