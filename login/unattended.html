@@ -95,8 +95,10 @@
 
         function login() {
             console.log('Logging in');
-            this.enableRefreshTokens();
-            this.enableFixedDevice();
+            if ( window.location === window.parent.location ) {
+                this.enableRefreshTokens();
+                this.enableFixedDevice();
+            }
             // Grab search string and remove question mark
             var search = window.location.search.substr(1);
             // Split paramter
