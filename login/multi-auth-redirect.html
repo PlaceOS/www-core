@@ -172,7 +172,13 @@
                 e.preventDefault();
                 var email = document.getElementsByName("email")[0].value;
                 var domain = email.split("@")[1].trim().toLowerCase();
-                var auth_route = authority?.auth_route[domain];
+                var auth_route = authority
+                    ? authority.config
+                        ? authority.config.auth_route
+                            ? authority.config.auth_route[domain]
+                            : ""
+                        : ""
+                    : "";
                 if (!auth_route) {
                     document.getElementById("error").style.display = "block";
                     document.getElementById("error").children[0].style.display =
