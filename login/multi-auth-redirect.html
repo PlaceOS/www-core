@@ -166,6 +166,7 @@
             console.log("Loaded page.");
             var authority = null;
             var key = "PLACEOS.MultiAuthEmail";
+            var continue_value = "";
 
             function onSubmit(e) {
                 console.log("Submitted form...");
@@ -185,10 +186,25 @@
                         "block";
                     return;
                 }
+                if (continue_value) {
+                    console.log("Adding continue to route:", auth_route);
+                    auth_route +=
+                        (auth_route.includes("?") ? "&" : "?") +
+                        "continue=" +
+                        continue_value;
+                }
                 if (document.getElementById("remember").checked) {
                     localStorage.setItem(key, email);
+                    console.log("Stored email for future.", email);
                 }
+                console.log("Redirecting to", auth_route);
                 window.location.href = auth_route;
+            }
+
+            function getContinue() {
+                var url = new URL(window.location.href);
+                continue_value = url.searchParams.get("continue");
+                console.log("Parsed continue value:", continue_value);
             }
 
             window.addEventListener("load", function () {
