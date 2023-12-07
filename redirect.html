@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge; IE=11; Chrome=1" />
+        <meta name="description" content="PlaceOS Progressive Web App" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>PlaceOS</title>
+        <style>
+            svg circle {
+                transform-origin: center;
+                animation: sk-rotate-simple 0.8s infinite linear;
+            }
+
+            @keyframes sk-rotate-simple {
+                0% {
+                    transform: rotate(0deg);
+                }
+                50% {
+                    transform: rotate(180deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div
+            style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            "
+        >
+            <div style="height: 64px; width: 64px">
+                <svg viewBox="0 0 120 120" style="width: 100%">
+                    <circle
+                        cx="60"
+                        cy="60"
+                        r="54"
+                        fill="none"
+                        stroke="rgba(0,0,0, .87)"
+                        stroke-width="12"
+                        stroke-dasharray="339.292"
+                        stroke-dashoffset="271.5"
+                        stroke-linecap="round"
+                    />
+                </svg>
+            </div>
+        </div>
+        <script>
+            function getRedirect() {
+                const url = new URL(location.href);
+                const redirect = url.searchParams.get("app");
+                if (redirect && redirect.startsWith("/")) {
+                    return redirect;
+                }
+                return "";
+            }
+
+            function loadAuthority(tries = 0) {
+                fetch("/auth/authority").then(
+                    (res) => {
+                        if (res.status !== 200) {
+                            return setTimeout(
+                                () => loadAuthority(++tries),
+                                1000 * Math.min(60, tries)
+                            );
+                        }
+                        res.json().then((data) => checkAuth(data));
+                    },
+                    () => {
+                        setTimeout(
+                            () => loadAuthority(++tries),
+                            1000 * Math.min(60, tries)
+                        );
+                    }
+                );
+            }
+
+            function checkAuth(authority) {
+                const has_auth =
+                    authority.session ||
+                    Object.keys(sessionStorage).find((key) =>
+                        key.includes("_token")
+                    ) ||
+                    Object.keys(localStorage).find((key) =>
+                        key.includes("_token")
+                    );
+                const redirect =
+                    getRedirect() ||
+                    authority.config?.default_app ||
+                    "/backoffice/";
+                if (has_auth) {
+                    return (location.href = redirect);
+                }
+                location.href = authority.login_url.replace(
+                    "{{url}}",
+                    encodeURIComponent(redirect)
+                );
+            }
+
+            loadAuthority();
+        </script>
+    </body>
+</html>
