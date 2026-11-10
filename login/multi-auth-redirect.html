@@ -163,6 +163,19 @@
             </form>
         </article>
         <script>
+            // Returns `value` as a same-origin path, or `fallback` when it is empty,
+            // invalid, or points off-site (e.g. "//evil.com", "/.//evil.com", "javascript:...").
+            function safeRedirect(value, fallback) {
+                if (!value) return fallback;
+                try {
+                    var url = new URL(value, location.href);
+                    if (url.origin === location.origin && !url.pathname.startsWith("//")) {
+                        return url.pathname + url.search + url.hash;
+                    }
+                } catch (e) {}
+                return fallback;
+            }
+
             console.log("Loaded page.");
             var authority = null;
             var key = "PLACEOS.MultiAuthEmail";
@@ -186,12 +199,13 @@
                         "block";
                     return;
                 }
-                if (continue_value) {
+                var next = safeRedirect(continue_value, "");
+                if (next) {
                     console.log("Adding continue to route:", auth_route);
                     auth_route +=
                         (auth_route.includes("?") ? "&" : "?") +
                         "continue=" +
-                        continue_value;
+                        encodeURIComponent(next);
                 }
                 if (document.getElementById("remember").checked) {
                     localStorage.setItem(key, email);

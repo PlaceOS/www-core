@@ -58,11 +58,24 @@
             </div>
         </div>
         <script>
+            // Returns `value` as a same-origin path, or `fallback` when it is empty,
+            // invalid, or points off-site (e.g. "//evil.com", "/.//evil.com", "javascript:...").
+            function safeRedirect(value, fallback) {
+                if (!value) return fallback;
+                try {
+                    var url = new URL(value, location.href);
+                    if (url.origin === location.origin && !url.pathname.startsWith("//")) {
+                        return url.pathname + url.search + url.hash;
+                    }
+                } catch (e) {}
+                return fallback;
+            }
+
             function getRedirect() {
                 const url = new URL(location.href);
                 const redirect = url.searchParams.get("app");
                 if (redirect && redirect.startsWith("/")) {
-                    return redirect;
+                    return safeRedirect(redirect, "");
                 }
                 return "";
             }

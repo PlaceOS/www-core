@@ -145,6 +145,19 @@
             </form>
         </article>
         <script>
+            // Returns `value` as a same-origin path, or `fallback` when it is empty,
+            // invalid, or points off-site (e.g. "//evil.com", "/.//evil.com", "javascript:...").
+            function safeRedirect(value, fallback) {
+                if (!value) return fallback;
+                try {
+                    var url = new URL(value, location.href);
+                    if (url.origin === location.origin && !url.pathname.startsWith("//")) {
+                        return url.pathname + url.search + url.hash;
+                    }
+                } catch (e) {}
+                return fallback;
+            }
+
             localStorage.removeItem('accessToken');
             localStorage.removeItem('accessExpiry');
             localStorage.removeItem('refreshToken');
@@ -170,7 +183,7 @@
 
                 $.post(form.attr('action'), form.serialize())
                     .done(function() {
-                        window.location = window.location.getParameter('continue') || '/';
+                        window.location = safeRedirect(window.location.getParameter('continue'), '/');
                     })
                     .error(function() {
                         $('#error').slideDown('fast', function() {

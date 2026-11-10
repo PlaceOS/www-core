@@ -61,15 +61,29 @@
     <script>
         var hash_map = {}; // Store for parameters
 
+        // Returns `value` as a same-origin path, or `fallback` when it is empty,
+        // invalid, or points off-site (e.g. "//evil.com", "/.//evil.com", "javascript:...").
+        function safeRedirect(value, fallback) {
+            if (!value) return fallback;
+            try {
+                var url = new URL(value, location.href);
+                if (url.origin === location.origin && !url.pathname.startsWith("//")) {
+                    return url.pathname + url.search + url.hash;
+                }
+            } catch (e) {}
+            return fallback;
+        }
+
+        // Leaves the page for the `continue` param, or the root when it is missing or off-site.
+        function goToContinue() {
+            window.location.href = safeRedirect(decodeURIComponent(hash_map.continue || ''), '/');
+        }
+
         function handleResponse(resp) {
             console.log(resp);
             setTimeout(function () {
                 // Login success continue
-                if (hash_map.continue) {
-                    window.location.href = decodeURIComponent(hash_map.continue);
-                } else {
-                    window.location.href = '/';
-                }
+                goToContinue();
             }, 1000);
         }
 
@@ -133,11 +147,7 @@
                 request.send('email=' + hash_map.username + '&password=' + hash_map.password);
             } else {
                 // Return to referer if no credentials
-                if (hash_map.continue) {
-                    window.location.href = decodeURIComponent(hash_map.continue);
-                } else {
-                    window.location.href = '/';
-                }
+                goToContinue();
             }
         }
 
